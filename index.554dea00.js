@@ -1,0 +1,11 @@
+function e(e){let t=document.getElementById("notification");t.textContent=e,t.style.display="block",setTimeout(function(){t.style.display="none"},7e3)}function t(t){let u=document.getElementById(t);u.querySelectorAll("input").forEach(function(e){e.addEventListener("input",function(e){e.target.style.border="1px solid rgba(255, 255, 255, 0.5)"})}),u.addEventListener("submit",function(t){if(!function(t){let u=t.querySelector('[name="name"]').value,l=t.querySelector('[name="email"]').value,n=t.querySelector('[name="phone"]').value;return validator.isLength(u,{min:2})?l||n?l&&!validator.isEmail(l)?(e("Пожалуйста, введите правильный email"),t.querySelector('[name="email"]').style.border="2px solid rgb(151, 28, 28)",!1):!n||!!validator.isMobilePhone(n.replace(/[^\d+]/g,""),"ru-RU")||(e("Пожалуйста, введите правильный номер телефона"),t.querySelector('[name="phone"]').style.border="2px solid rgb(151, 28, 28)",!1):(e("Пожалуйста,введите email или номер телефона"),!1):(e("Пожалуйста, введите Ваше имя"),t.querySelector('[name="name"]').style.border="2px solid rgb(151, 28, 28)",!1)}(u))t.preventDefault();else{t.preventDefault();let e=`\u{414}\u{430}\u{43D}\u{43D}\u{44B}\u{435} \u{438}\u{437} \u{444}\u{43E}\u{440}\u{43C}\u{44B}: 
+
+      \u{418}\u{43C}\u{44F} \u{43E}\u{442}\u{43F}\u{440}\u{430}\u{432}\u{438}\u{442}\u{435}\u{43B}\u{44F}: ${this.name.value}
+
+      \u{417}\u{430}\u{434}\u{430}\u{447}\u{430}: ${this.interest.value?this.interest.value:"не указано"}
+
+      Email:  ${this.email.value?this.email.value:"не указано"}
+
+      \u{41D}\u{43E}\u{43C}\u{435}\u{440} \u{442}\u{435}\u{43B}\u{435}\u{444}\u{43E}\u{43D}\u{430}:  ${this.phone.value?this.phone.value:"не указано"}
+`;axios.post("https://api.telegram.org/bot7780425723:AAHOZOmdv07R_SaSQsZQHKgnE-BBdOrjT0k/sendMessage",{chat_id:"617780753",text:e,parse_mode:"html"}).then(e=>{this.name.value="",this.interest.value="",this.email.value="",this.phone.value="",function(e){let t=document.getElementById("success");t.textContent=e,t.style.display="block",setTimeout(function(){t.style.display="none"},1e4)}("Заявка успешно отправлена!")}).catch(e=>{console.warn(e)}),document.getElementById("myModal").style.display="none",u.querySelector('button[type="submit"]').disabled=!0}})}t("form"),t("form-modal");
+//# sourceMappingURL=index.554dea00.js.map
